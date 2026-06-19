@@ -366,54 +366,55 @@ class Component extends DCLogic {
     if (!this._styleEl) return;
     const dark = this.state.dark;
     localStorage.setItem('ll-dark', dark ? '1' : '0');
+    document.documentElement.classList.toggle('ll-dark-mode', dark);
     if (!dark) { this._styleEl.textContent = ''; return; }
     this._styleEl.textContent = `
       /* ── Base ── */
-      body { background: #080F1D !important; color: #E4D9CC !important; }
+      html.ll-dark-mode body { background: #080F1D !important; color: #E4D9CC !important; }
 
       /* ── Light section backgrounds → deep navy-dark ── */
-      [style*="background: #FDF6EC"] { background: #080F1D !important; }
-      [style*="background: #FFFBF5"] { background: #0D1828 !important; }
+      html.ll-dark-mode [style*="background: #FDF6EC"] { background: #080F1D !important; }
+      html.ll-dark-mode [style*="background: #FFFBF5"] { background: #0D1828 !important; }
 
       /* ── Stat bar, Galeri, CTA, Footer → subtly richer ── */
-      [style*="background: #1C3068"] { background: #152448 !important; }
-      [style*="background: #12214E"] { background: #0E1B3C !important; }
-      [style*="background: #0C1428"] { background: #060D1A !important; }
+      html.ll-dark-mode [style*="background: #1C3068"] { background: #152448 !important; }
+      html.ll-dark-mode [style*="background: #12214E"] { background: #0E1B3C !important; }
+      html.ll-dark-mode [style*="background: #0C1428"] { background: #060D1A !important; }
 
       /* ── Cards & containers ── */
-      [style*="border: 1px solid #E5D9C8"] { background: #0D1828 !important; border-color: #1C2E48 !important; }
-      [style*="border: 1px solid #EAE0D4"] { background: #080F1D !important; border-color: #1C2E48 !important; }
-      [style*="border: 1px solid rgba(255,251,245,0.12)"] { background: rgba(255,255,255,0.04) !important; border-color: rgba(255,255,255,0.1) !important; }
+      html.ll-dark-mode [style*="border: 1px solid #E5D9C8"] { background: #0D1828 !important; border-color: #1C2E48 !important; }
+      html.ll-dark-mode [style*="border: 1px solid #EAE0D4"] { background: #080F1D !important; border-color: #1C2E48 !important; }
+      html.ll-dark-mode [style*="border: 1px solid rgba(255,251,245,0.12)"] { background: rgba(255,255,255,0.04) !important; border-color: rgba(255,255,255,0.1) !important; }
 
       /* ── Borders only ── */
-      [style*="border-bottom: 1px solid #E5D9C8"] { border-bottom-color: #1C2E48 !important; }
-      [style*="border-top: 1px solid #EAE0D4"] { border-top-color: #1C2E48 !important; }
-      [style*="border: 1px solid rgba(232,160,32,0.5)"] { border-color: rgba(232,160,32,0.45) !important; }
+      html.ll-dark-mode [style*="border-bottom: 1px solid #E5D9C8"] { border-bottom-color: #1C2E48 !important; }
+      html.ll-dark-mode [style*="border-top: 1px solid #EAE0D4"] { border-top-color: #1C2E48 !important; }
+      html.ll-dark-mode [style*="border: 1px solid rgba(232,160,32,0.5)"] { border-color: rgba(232,160,32,0.45) !important; }
 
       /* ── Text colours ── */
-      [style*="color: #2A1F14"] { color: #E4D9CC !important; }
-      [style*="color: #5A4A3A"] { color: #90A8BC !important; }
-      [style*="color: #3A2C1E"] { color: #D0C4B8 !important; }
-      [style*="color: #1C3068"] { color: #7AB8DC !important; }
-      [style*="color: #C8864A"] { color: #D8A870 !important; }
-      [style*="color: #9A8878"] { color: #5C7890 !important; }
-      [style*="color: #5A7AAA"] { color: #4A6880 !important; }
+      html.ll-dark-mode [style*="color: #2A1F14"] { color: #E4D9CC !important; }
+      html.ll-dark-mode [style*="color: #5A4A3A"] { color: #90A8BC !important; }
+      html.ll-dark-mode [style*="color: #3A2C1E"] { color: #D0C4B8 !important; }
+      html.ll-dark-mode [style*="color: #1C3068"] { color: #7AB8DC !important; }
+      html.ll-dark-mode [style*="color: #C8864A"] { color: #D8A870 !important; }
+      html.ll-dark-mode [style*="color: #9A8878"] { color: #5C7890 !important; }
+      html.ll-dark-mode [style*="color: #5A7AAA"] { color: #4A6880 !important; }
 
       /* ── Hero badge ── */
-      [style*="background: rgba(232,160,32,0.12)"] { background: rgba(232,160,32,0.15) !important; }
+      html.ll-dark-mode [style*="background: rgba(232,160,32,0.12)"] { background: rgba(232,160,32,0.15) !important; }
 
       /* ── Harga card header keeps navy-ish but darkened ── */
-      [style*="background: #1C3068"][style*="padding: 28px 32px"] { background: #152040 !important; }
+      html.ll-dark-mode [style*="background: #1C3068"][style*="padding: 28px 32px"] { background: #152040 !important; }
 
       /* ── Nav button stays navy ── */
-      [style*="background: #1C3068"][style*="text-transform: uppercase"] { background: #152448 !important; }
+      html.ll-dark-mode [style*="background: #1C3068"][style*="text-transform: uppercase"] { background: #152448 !important; }
 
       /* ── WhatsApp buttons stay green ── */
-      [style*="background: #25D366"] { background: #1BA854 !important; }
+      html.ll-dark-mode [style*="background: #25D366"] { background: #1BA854 !important; }
 
       /* ── Shadow ── */
-      [style*="box-shadow: 0 4px 24px rgba(28,48,104,0.07)"] { box-shadow: 0 4px 32px rgba(0,0,0,0.55) !important; }
-      [style*="box-shadow: 0 8px 48px rgba(0,0,0,0.3)"] { box-shadow: 0 8px 48px rgba(0,0,0,0.65) !important; }
+      html.ll-dark-mode [style*="box-shadow: 0 4px 24px rgba(28,48,104,0.07)"] { box-shadow: 0 4px 32px rgba(0,0,0,0.55) !important; }
+      html.ll-dark-mode [style*="box-shadow: 0 8px 48px rgba(0,0,0,0.3)"] { box-shadow: 0 8px 48px rgba(0,0,0,0.65) !important; }
 
       /* ── Gold dividers, stars, labels stay as-is ── */
     `;
