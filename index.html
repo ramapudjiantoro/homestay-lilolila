@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="./support.js"></script>
+<script>(function(){if(localStorage.getItem('ll-dark')==='1'){document.documentElement.classList.add('ll-dark-mode','ll-notrans');}})();</script>
 </head>
 <body>
 <x-dc>
@@ -16,13 +17,46 @@
     a { text-decoration: none; }
     @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
     @keyframes fadeUp { from { opacity: 0; transform: translateY(32px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* ── Smooth theme transitions ── */
+    html.ll-notrans *, html.ll-notrans *::before, html.ll-notrans *::after { transition-duration: 0ms !important; }
+    body, nav, section, article, aside, header, footer, div, p, span, h1, h2, h3, h4, h5, h6, a, li, button { transition: background-color 0.35s ease, color 0.25s ease, border-color 0.3s ease, box-shadow 0.3s ease; }
+    img, video, canvas { transition: none !important; }
+    svg { transition: color 0.25s ease, stroke 0.25s ease, fill 0.25s ease; }
+
+    /* ── Navbar links ── */
+    .ll-nav-links { display: flex; align-items: center; }
+    .ll-nav-links a { color: #3A2C1E; font-size: 13.5px; font-weight: 600; letter-spacing: 0.04em; padding: 5px 14px; border-radius: 4px; white-space: nowrap; }
+    .ll-nav-links a:hover { background: rgba(28,48,104,0.08); color: #1C3068; }
+    @media (max-width: 860px) { .ll-nav-links { display: none !important; } }
+    html.ll-dark-mode .ll-nav-links a { color: #A8C4E0; }
+    html.ll-dark-mode .ll-nav-links a:hover { background: rgba(255,255,255,0.07); color: #E8A020; }
+
+    /* ── Mode icon ── */
+    .ll-mode-icon { display: flex; align-items: center; justify-content: center; width: 22px; height: 22px; flex-shrink: 0; }
+    .ll-sun-icon { display: none; }
+    html.ll-dark-mode .ll-moon-icon { display: none; }
+    html.ll-dark-mode .ll-sun-icon { display: flex; }
   </style>
 </helmet>
 
 <!-- ── NAVBAR ── -->
 <nav style="position: sticky; top: 0; z-index: 100; background: #FFFBF5; border-bottom: 1px solid #E5D9C8; padding: 0 clamp(18px,5vw,60px); height: 68px; display: flex; align-items: center; justify-content: space-between; gap: 16px;">
-  <img src="uploads/logo-1781888930194.jpg" alt="Homestay Lilo Lila" style="height: 50px; width: auto; object-fit: contain;">
-  <div style="display: flex; align-items: center; gap: 12px; flex-shrink: 0;">
+  <img src="uploads/logo-1781888930194.jpg" alt="Homestay Lilo Lila" style="height: 50px; width: auto; object-fit: contain; flex-shrink: 0;">
+  <div class="ll-nav-links">
+    <a href="#fasilitas">Fasilitas</a>
+    <a href="#harga">Harga</a>
+    <a href="#galeri">Galeri</a>
+    <a href="#testimoni">Ulasan</a>
+    <a href="#lokasi">Lokasi</a>
+  </div>
+  <div style="display: flex; align-items: center; gap: 10px; flex-shrink: 0;">
+    <span class="ll-mode-icon ll-moon-icon" aria-hidden="true" title="Mode Gelap aktif">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="#5A4A3A"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </span>
+    <span class="ll-mode-icon ll-sun-icon" aria-hidden="true" title="Mode Terang aktif">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#E8A020" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><line x1="12" y1="2" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22"/><line x1="4.93" y1="4.93" x2="6.34" y2="6.34"/><line x1="17.66" y1="17.66" x2="19.07" y2="19.07"/><line x1="2" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="22" y2="12"/><line x1="4.93" y1="19.07" x2="6.34" y2="17.66"/><line x1="17.66" y1="6.34" x2="19.07" y2="4.93"/></svg>
+    </span>
     <button id="ll-dark-toggle" title="{{ toggleTitle }}" style="position: relative; width: 46px; height: 26px; background: {{ toggleBg }}; border-radius: 13px; border: 1px solid {{ toggleBorder }}; cursor: pointer; padding: 0; flex-shrink: 0; transition: background 0.3s ease;">
       <span style="position: absolute; top: 3px; left: {{ toggleThumbLeft }}; width: 20px; height: 20px; background: #fff; border-radius: 50%; box-shadow: 0 1px 3px rgba(0,0,0,0.25); transition: left 0.3s ease; display: block;"></span>
     </button>
@@ -371,6 +405,8 @@ class Component extends DCLogic {
 
     const saved = localStorage.getItem('ll-dark');
     if (saved === '1') this.setState({ dark: true });
+    // Re-enable transitions after initial theme applied (prevents flash on load)
+    setTimeout(() => document.documentElement.classList.remove('ll-notrans'), 80);
   }
 
   componentWillUnmount() {
@@ -396,6 +432,9 @@ class Component extends DCLogic {
     this._styleEl.textContent = `
       /* ── Base ── */
       html.ll-dark-mode body { background: #080F1D !important; color: #E4D9CC !important; }
+
+      /* ── Navbar ── */
+      html.ll-dark-mode nav { background: #0D1828 !important; border-bottom-color: #1C2E48 !important; }
 
       /* ── Light section backgrounds → deep navy-dark ── */
       html.ll-dark-mode [style*="background: #FDF6EC"] { background: #080F1D !important; }
@@ -424,24 +463,33 @@ class Component extends DCLogic {
       html.ll-dark-mode [style*="color: #C8864A"] { color: #D8A870 !important; }
       html.ll-dark-mode [style*="color: #9A8878"] { color: #5C7890 !important; }
       html.ll-dark-mode [style*="color: #5A7AAA"] { color: #4A6880 !important; }
+      html.ll-dark-mode [style*="color: #3A5070"] { color: #2A4060 !important; }
 
       /* ── Hero badge ── */
       html.ll-dark-mode [style*="background: rgba(232,160,32,0.12)"] { background: rgba(232,160,32,0.15) !important; }
 
-      /* ── Harga card header keeps navy-ish but darkened ── */
+      /* ── Harga card header ── */
       html.ll-dark-mode [style*="background: #1C3068"][style*="padding: 28px 32px"] { background: #152040 !important; }
 
-      /* ── Nav button stays navy ── */
+      /* ── Nav CTA button stays navy ── */
       html.ll-dark-mode [style*="background: #1C3068"][style*="text-transform: uppercase"] { background: #152448 !important; }
 
-      /* ── WhatsApp buttons stay green ── */
+      /* ── Maps button ── */
+      html.ll-dark-mode [style*="background: #1C3068"][style*="padding: 10px 20px"] { background: #152448 !important; }
+
+      /* ── WhatsApp buttons stay green (slightly dimmed) ── */
       html.ll-dark-mode [style*="background: #25D366"] { background: #1BA854 !important; }
 
-      /* ── Shadow ── */
-      html.ll-dark-mode [style*="box-shadow: 0 4px 24px rgba(28,48,104,0.07)"] { box-shadow: 0 4px 32px rgba(0,0,0,0.55) !important; }
-      html.ll-dark-mode [style*="box-shadow: 0 8px 48px rgba(0,0,0,0.3)"] { box-shadow: 0 8px 48px rgba(0,0,0,0.65) !important; }
+      /* ── Hero overlay: already dark, just deepen slightly ── */
+      html.ll-dark-mode [style*="background: linear-gradient(to top, rgba(10,16,40"] { background: linear-gradient(to top, rgba(4,8,20,0.95) 0%, rgba(4,8,20,0.35) 52%, transparent 100%) !important; }
 
-      /* ── Gold dividers, stars, labels stay as-is ── */
+      /* ── Location rows alternating ── */
+      html.ll-dark-mode [style*="background: #FFFBF5"][style*="border-radius: 4px"] { background: #0D1828 !important; }
+      html.ll-dark-mode [style*="background: #FDF6EC"][style*="border-radius: 4px"] { background: #0A1220 !important; }
+
+      /* ── Shadows ── */
+      html.ll-dark-mode [style*="box-shadow: 0 4px 24px rgba(28,48,104,0.07)"] { box-shadow: 0 4px 32px rgba(0,0,0,0.6) !important; }
+      html.ll-dark-mode [style*="box-shadow: 0 8px 48px rgba(0,0,0,0.3)"] { box-shadow: 0 8px 56px rgba(0,0,0,0.7) !important; }
     `;
   }
 
