@@ -23,7 +23,7 @@
 <nav style="position: sticky; top: 0; z-index: 100; background: #FFFBF5; border-bottom: 1px solid #E5D9C8; padding: 0 clamp(18px,5vw,60px); height: 68px; display: flex; align-items: center; justify-content: space-between; gap: 16px;">
   <img src="uploads/logo-1781888930194.jpg" alt="Homestay Lilo Lila" style="height: 50px; width: auto; object-fit: contain;">
   <div style="display: flex; align-items: center; gap: 12px; flex-shrink: 0;">
-    <button id="ll-dark-toggle" title="{{ toggleTitle }}" style="position: relative; width: 46px; height: 26px; background: {{ toggleBg }}; border-radius: 13px; border: 1px solid {{ toggleBorder }}; cursor: pointer; padding: 0; flex-shrink: 0; transition: background 0.3s ease;">
+    <button id="ll-dark-toggle" onclick="{{ toggleDark }}" title="{{ toggleTitle }}" style="position: relative; width: 46px; height: 26px; background: {{ toggleBg }}; border-radius: 13px; border: 1px solid {{ toggleBorder }}; cursor: pointer; padding: 0; flex-shrink: 0; transition: background 0.3s ease;">
       <span style="position: absolute; top: 3px; left: {{ toggleThumbLeft }}; width: 20px; height: 20px; background: #fff; border-radius: 50%; box-shadow: 0 1px 3px rgba(0,0,0,0.25); transition: left 0.3s ease; display: block;"></span>
     </button>
     <a href="{{ waUrl }}" target="_blank" rel="noopener" style="background: #1C3068; color: #fff; font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 10px 22px; border-radius: 3px; white-space: nowrap;">Pesan Sekarang</a>
@@ -341,19 +341,12 @@ class Component extends DCLogic {
     document.head.appendChild(style);
     this._styleEl = style;
 
-    // Attach direct DOM listener — more reliable than synthetic events in DC preview
-    this._toggleHandler = () => this.setState(s => ({ dark: !s.dark }));
-    const btn = document.getElementById('ll-dark-toggle');
-    if (btn) btn.addEventListener('click', this._toggleHandler);
-
     const saved = localStorage.getItem('ll-dark');
     if (saved === '1') this.setState({ dark: true });
   }
 
   componentWillUnmount() {
     if (this._styleEl) this._styleEl.remove();
-    const btn = document.getElementById('ll-dark-toggle');
-    if (btn && this._toggleHandler) btn.removeEventListener('click', this._toggleHandler);
   }
 
   componentDidUpdate() {
