@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Lato', sans-serif; background: #FDF6EC; color: #2A1F14; overflow-x: hidden; }
+    a { text-decoration: none; }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(32px); } to { opacity: 1; transform: translateY(0); } }
+  </style>
+</helmet>
+
+<!-- ── NAVBAR ── -->
+<nav style="position: sticky; top: 0; z-index: 100; background: #FFFBF5; border-bottom: 1px solid #E5D9C8; padding: 0 clamp(18px,5vw,60px); height: 68px; display: flex; align-items: center; justify-content: space-between; gap: 16px;">
+  <img src="uploads/logo-1781888930194.jpg" alt="Homestay Lilo Lila" style="height: 50px; width: auto; object-fit: contain;">
+  <div style="display: flex; align-items: center; gap: 12px; flex-shrink: 0;">
+    <button id="ll-dark-toggle" title="{{ toggleTitle }}" style="position: relative; width: 46px; height: 26px; background: {{ toggleBg }}; border-radius: 13px; border: 1px solid {{ toggleBorder }}; cursor: pointer; padding: 0; flex-shrink: 0; transition: background 0.3s ease;">
+      <span style="position: absolute; top: 3px; left: {{ toggleThumbLeft }}; width: 20px; height: 20px; background: #fff; border-radius: 50%; box-shadow: 0 1px 3px rgba(0,0,0,0.25); transition: left 0.3s ease; display: block;"></span>
+    </button>
+    <a href="{{ waUrl }}" target="_blank" rel="noopener" style="background: #1C3068; color: #fff; font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 10px 22px; border-radius: 3px; white-space: nowrap;">Pesan Sekarang</a>
+  </div>
+</nav>
+
+<!-- ── HERO ── -->
+<section style="position: relative; height: 92vh; min-height: 480px; overflow: hidden;">
+  <img src="uploads/photo-1781888941293.jpg" alt="Homestay Lilo Lila" style="width: 100%; height: 100%; object-fit: cover; object-position: center 25%; animation: fadeIn 1s ease both;">
+  <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(10,16,40,0.88) 0%, rgba(10,16,40,0.28) 52%, transparent 100%);"></div>
+  <div style="position: absolute; bottom: 0; left: 0; right: 0; padding: clamp(28px,5vw,64px); animation: fadeUp 0.9s 0.25s ease both;">
+    <div style="display: inline-flex; align-items: center; gap: 8px; background: rgba(232,160,32,0.12); border: 1px solid rgba(232,160,32,0.4); border-radius: 20px; padding: 5px 16px; margin-bottom: 18px;">
+      <span style="color: #E8A020; font-size: 14px; line-height: 1;">★</span>
+      <span style="color: #EDD9A0; font-size: 12px; font-weight: 700; letter-spacing: 0.1em;">5.0 · 59 ULASAN BINTANG LIMA</span>
+    </div>
+    <h1 style="font-family: 'Playfair Display', serif; font-size: clamp(40px,7.5vw,92px); font-weight: 700; color: #FDF6EC; line-height: 1.05; margin-bottom: 12px; text-wrap: pretty;">Homestay Lilo Lila</h1>
+    <p style="font-family: 'Playfair Display', serif; font-style: italic; font-size: clamp(16px,2.5vw,24px); color: #D4C090; margin-bottom: 36px; letter-spacing: 0.03em;">"Serasa di Rumah Sendiri"</p>
+    <div style="display: flex; align-items: center; gap: 20px; flex-wrap: wrap;">
+      <a href="{{ waUrl }}" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 10px; background: #25D366; color: #fff; font-size: 16px; font-weight: 700; padding: 14px 30px; border-radius: 4px; letter-spacing: 0.02em; white-space: nowrap;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0;"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Chat WhatsApp
+      </a>
+      <span style="color: #D4C090; font-size: 15px; font-weight: 300; letter-spacing: 0.02em;">Mulai {{ weekdayPrice }} / malam</span>
+    </div>
+  </div>
+</section>
+
+<!-- ── STATS ── -->
+<div style="background: #1C3068; padding: 36px clamp(18px,5vw,60px);">
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(130px,1fr)); gap: 24px 16px; max-width: 860px; margin: 0 auto; text-align: center;">
+    <div>
+      <div style="font-family: 'Playfair Display', serif; font-size: 36px; font-weight: 700; color: #E8A020; line-height: 1;">★ 5.0</div>
+      <div style="font-size: 11px; color: #7A9DC0; letter-spacing: 0.12em; text-transform: uppercase; margin-top: 8px;">Rating Google</div>
+    </div>
+    <div>
+      <div style="font-family: 'Playfair Display', serif; font-size: 36px; font-weight: 700; color: #E8A020; line-height: 1;">10+</div>
+      <div style="font-size: 11px; color: #7A9DC0; letter-spacing: 0.12em; text-transform: uppercase; margin-top: 8px;">Kapasitas Tamu</div>
+    </div>
+    <div>
+      <div style="font-family: 'Playfair Display', serif; font-size: 36px; font-weight: 700; color: #E8A020; line-height: 1;">3</div>
+      <div style="font-size: 11px; color: #7A9DC0; letter-spacing: 0.12em; text-transform: uppercase; margin-top: 8px;">Kamar Tidur</div>
+    </div>
+    <div>
+      <div style="font-family: 'Playfair Display', serif; font-size: 36px; font-weight: 700; color: #E8A020; line-height: 1;">600rb</div>
+      <div style="font-size: 11px; color: #7A9DC0; letter-spacing: 0.12em; text-transform: uppercase; margin-top: 8px;">Mulai / Malam</div>
+    </div>
+  </div>
+</div>
+
+<!-- ── TENTANG ── -->
+<section style="background: #FDF6EC; padding: 80px clamp(18px,5vw,60px);">
+  <div style="max-width: 700px; margin: 0 auto; text-align: center;">
+    <p style="font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: #C8864A; font-weight: 700; margin-bottom: 16px;">Sukoharjo · Solo · Jawa Tengah</p>
+    <div style="width: 44px; height: 2px; background: #E8A020; margin: 0 auto 24px;"></div>
+    <h2 style="font-family: 'Playfair Display', serif; font-size: clamp(28px,4vw,44px); font-weight: 700; color: #1C3068; line-height: 1.2; margin-bottom: 22px; text-wrap: pretty;">Rumah Keduamu di Kota Solo</h2>
+    <p style="font-size: 17px; line-height: 1.85; color: #5A4A3A; font-weight: 300; text-wrap: pretty;">Homestay Lilo Lila hadir untuk keluarga yang ingin menikmati Solo tanpa kehilangan kenyamanan rumah sendiri. Dengan tiga kamar tidur, dapur lengkap, ruang santai yang luas, dan suasana lingkungan yang tenang — setiap momen bersama keluarga menjadi lebih bermakna.</p>
+  </div>
+</section>
+
+<!-- ── FASILITAS ── -->
+<section id="fasilitas" style="background: #FFFBF5; padding: 72px clamp(18px,5vw,60px);">
+  <div style="max-width: 1080px; margin: 0 auto;">
+    <p style="font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: #C8864A; font-weight: 700; text-align: center; margin-bottom: 12px;">Yang Anda Dapatkan</p>
+    <div style="width: 44px; height: 2px; background: #E8A020; margin: 0 auto 12px;"></div>
+    <h2 style="font-family: 'Playfair Display', serif; font-size: clamp(26px,3.5vw,38px); font-weight: 700; color: #1C3068; text-align: center; margin-bottom: 48px;">Fasilitas Lengkap</h2>
+    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(210px,1fr)); gap: 12px;">
+      <div style="display: flex; align-items: center; gap: 12px; padding: 14px 16px; background: #FDF6EC; border-radius: 4px; border: 1px solid #EAE0D4;">
+        <svg width="15" height="15" viewBox="0 0 15 15" fill="none" style="flex-shrink:0;"><path d="M2.5 7.5L5.5 10.5L12.5 4" stroke="#E8A020" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span style="font-size: 14px; color: #3A2C1E; line-height: 1.3;">3 Kamar Tidur</span>
+      </div>
+      <div style="display: flex; align-items: center; gap: 12px; padding: 14px 16px; background: #FDF6EC; border-radius: 4px; border: 1px solid #EAE0D4;">
+        <svg width="15" height="15" viewBox="0 0 15 15" fill="none" style="flex-shrink:0;"><path d="M2.5 7.5L5.5 10.5L12.5 4" stroke="#E8A020" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span style="font-size: 14px; color: #3A2C1E; line-height: 1.3;">Kamar Mandi + Bathtub</span>
+      </div>
+      <div style="display: flex; align-items: center; gap: 12px; padding: 14px 16px; background: #FDF6EC; border-radius: 4px; border: 1px solid #EAE0D4;">
+        <svg width="15" height="15" viewBox="0 0 15 15" fill="none" style="flex-shrink:0;"><path d="M2.5 7.5L5.5 10.5L12.5 4" stroke="#E8A020" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span style="font-size: 14px; color: #3A2C1E; line-height: 1.3;">Water Heater</span>
+      </div>
+      <div style="display: flex; align-items: center; gap: 12px; padding: 14px 16px; background: #FDF6EC; border-radius: 4px; border: 1px solid #EAE0D4;">
+        <svg width="15" height="15" viewBox="0 0 15 15" fill="none" style="flex-shrink:0;"><path d="M2.5 7.5L5.5 10.5L12.5 4" stroke="#E8A020" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span style="font-size: 14px; color: #3A2C1E; line-height: 1.3;">AC di Setiap Kamar</span>
+      </div>
+      <div style="display: flex; align-items: center; gap: 12px; padding: 14px 16px; background: #FDF6EC; border-radius: 4px; border: 1px solid #EAE0D4;">
+        <svg width="15" height="15" viewBox="0 0 15 15" fill="none" style="flex-shrink:0;"><path d="M2.5 7.5L5.5 10.5L12.5 4" stroke="#E8A020" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span style="font-size: 14px; color: #3A2C1E; line-height: 1.3;">WiFi Cepat</span>
+      </div>
+      <div style="display: flex; align-items: center; gap: 12px; padding: 14px 16px; background: #FDF6EC; border-radius: 4px; border: 1px solid #EAE0D4;">
+        <svg width="15" height="15" viewBox="0 0 15 15" fill="none" style="flex-shrink:0;"><path d="M2.5 7.5L5.5 10.5L12.5 4" stroke="#E8A020" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span style="font-size: 14px; color: #3A2C1E; line-height: 1.3;">Televisi</span>
+      </div>
+      <div style="display: flex; align-items: center; gap: 12px; padding: 14px 16px; background: #FDF6EC; border-radius: 4px; border: 1px solid #EAE0D4;">
+        <svg width="15" height="15" viewBox="0 0 15 15" fill="none" style="flex-shrink:0;"><path d="M2.5 7.5L5.5 10.5L12.5 4" stroke="#E8A020" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span style="font-size: 14px; color: #3A2C1E; line-height: 1.3;">Mesin Cuci</span>
+      </div>
+      <div style="display: flex; align-items: center; gap: 12px; padding: 14px 16px; background: #FDF6EC; border-radius: 4px; border: 1px solid #EAE0D4;">
+        <svg width="15" height="15" viewBox="0 0 15 15" fill="none" style="flex-shrink:0;"><path d="M2.5 7.5L5.5 10.5L12.5 4" stroke="#E8A020" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span style="font-size: 14px; color: #3A2C1E; line-height: 1.3;">Dapur Lengkap</span>
+      </div>
+      <div style="display: flex; align-items: center; gap: 12px; padding: 14px 16px; background: #FDF6EC; border-radius: 4px; border: 1px solid #EAE0D4;">
+        <svg width="15" height="15" viewBox="0 0 15 15" fill="none" style="flex-shrink:0;"><path d="M2.5 7.5L5.5 10.5L12.5 4" stroke="#E8A020" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span style="font-size: 14px; color: #3A2C1E; line-height: 1.3;">Ruang Makan</span>
+      </div>
+      <div style="display: flex; align-items: center; gap: 12px; padding: 14px 16px; background: #FDF6EC; border-radius: 4px; border: 1px solid #EAE0D4;">
+        <svg width="15" height="15" viewBox="0 0 15 15" fill="none" style="flex-shrink:0;"><path d="M2.5 7.5L5.5 10.5L12.5 4" stroke="#E8A020" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span style="font-size: 14px; color: #3A2C1E; line-height: 1.3;">Ruang Santai Keluarga</span>
+      </div>
+      <div style="display: flex; align-items: center; gap: 12px; padding: 14px 16px; background: #FDF6EC; border-radius: 4px; border: 1px solid #EAE0D4;">
+        <svg width="15" height="15" viewBox="0 0 15 15" fill="none" style="flex-shrink:0;"><path d="M2.5 7.5L5.5 10.5L12.5 4" stroke="#E8A020" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span style="font-size: 14px; color: #3A2C1E; line-height: 1.3;">Kulkas</span>
+      </div>
+      <div style="display: flex; align-items: center; gap: 12px; padding: 14px 16px; background: #FDF6EC; border-radius: 4px; border: 1px solid #EAE0D4;">
+        <svg width="15" height="15" viewBox="0 0 15 15" fill="none" style="flex-shrink:0;"><path d="M2.5 7.5L5.5 10.5L12.5 4" stroke="#E8A020" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span style="font-size: 14px; color: #3A2C1E; line-height: 1.3;">Setrika &amp; Perlengkapan Dapur</span>
+      </div>
+      <div style="display: flex; align-items: center; gap: 12px; padding: 14px 16px; background: #FDF6EC; border-radius: 4px; border: 1px solid #EAE0D4;">
+        <svg width="15" height="15" viewBox="0 0 15 15" fill="none" style="flex-shrink:0;"><path d="M2.5 7.5L5.5 10.5L12.5 4" stroke="#E8A020" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span style="font-size: 14px; color: #3A2C1E; line-height: 1.3;">Parkir 2–3 Mobil</span>
+      </div>
+      <div style="display: flex; align-items: center; gap: 12px; padding: 14px 16px; background: #FDF6EC; border-radius: 4px; border: 1px solid #EAE0D4;">
+        <svg width="15" height="15" viewBox="0 0 15 15" fill="none" style="flex-shrink:0;"><path d="M2.5 7.5L5.5 10.5L12.5 4" stroke="#E8A020" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span style="font-size: 14px; color: #3A2C1E; line-height: 1.3;">Karaoke</span>
+      </div>
+      <div style="display: flex; align-items: center; gap: 12px; padding: 14px 16px; background: #FDF6EC; border-radius: 4px; border: 1px solid #EAE0D4;">
+        <svg width="15" height="15" viewBox="0 0 15 15" fill="none" style="flex-shrink:0;"><path d="M2.5 7.5L5.5 10.5L12.5 4" stroke="#E8A020" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span style="font-size: 14px; color: #3A2C1E; line-height: 1.3;">Mainan Anak &amp; Bunk Bed</span>
+      </div>
+      <div style="display: flex; align-items: center; gap: 12px; padding: 14px 16px; background: #FDF6EC; border-radius: 4px; border: 1px solid #EAE0D4;">
+        <svg width="15" height="15" viewBox="0 0 15 15" fill="none" style="flex-shrink:0;"><path d="M2.5 7.5L5.5 10.5L12.5 4" stroke="#E8A020" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span style="font-size: 14px; color: #3A2C1E; line-height: 1.3;">Lingkungan Aman untuk Anak</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── HARGA ── -->
+<section id="harga" style="background: #FDF6EC; padding: 72px clamp(18px,5vw,60px);">
+  <div style="max-width: 680px; margin: 0 auto;">
+    <p style="font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: #C8864A; font-weight: 700; text-align: center; margin-bottom: 12px;">Transparan &amp; Terjangkau</p>
+    <div style="width: 44px; height: 2px; background: #E8A020; margin: 0 auto 12px;"></div>
+    <h2 style="font-family: 'Playfair Display', serif; font-size: clamp(26px,3.5vw,38px); font-weight: 700; color: #1C3068; text-align: center; margin-bottom: 36px;">Harga &amp; Ketersediaan</h2>
+    <div style="background: #FFFBF5; border: 1px solid #E5D9C8; border-radius: 6px; overflow: hidden; box-shadow: 0 4px 24px rgba(28,48,104,0.07);">
+      <div style="background: #1C3068; padding: 28px 32px;">
+        <div style="font-family: 'Playfair Display', serif; font-size: 48px; font-weight: 700; color: #E8A020; line-height: 1;">{{ weekdayPrice }}</div>
+        <div style="font-size: 14px; color: #A8C4E0; margin-top: 6px; letter-spacing: 0.04em;">per malam · Weekday</div>
+      </div>
+      <div style="padding: 28px 32px; display: flex; flex-direction: column; gap: 14px;">
+        <div style="display: flex; align-items: flex-start; gap: 12px;">
+          <svg width="15" height="15" viewBox="0 0 15 15" fill="none" style="flex-shrink:0; margin-top:2px;"><path d="M2.5 7.5L5.5 10.5L12.5 4" stroke="#E8A020" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span style="font-size: 15px; color: #3A2C1E; line-height: 1.5;">Kapasitas hingga <strong>10 orang</strong> (pernah menampung ~20 orang untuk rombongan)</span>
+        </div>
+        <div style="display: flex; align-items: flex-start; gap: 12px;">
+          <svg width="15" height="15" viewBox="0 0 15 15" fill="none" style="flex-shrink:0; margin-top:2px;"><path d="M2.5 7.5L5.5 10.5L12.5 4" stroke="#E8A020" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span style="font-size: 15px; color: #3A2C1E; line-height: 1.5;">Harga <strong>weekend</strong> dan rombongan dapat dibicarakan</span>
+        </div>
+        <div style="display: flex; align-items: flex-start; gap: 12px;">
+          <svg width="15" height="15" viewBox="0 0 15 15" fill="none" style="flex-shrink:0; margin-top:2px;"><path d="M2.5 7.5L5.5 10.5L12.5 4" stroke="#E8A020" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span style="font-size: 15px; color: #3A2C1E; line-height: 1.5;">Pembayaran bisa dilakukan <strong>saat check-in</strong></span>
+        </div>
+        <div style="display: flex; align-items: flex-start; gap: 12px;">
+          <svg width="15" height="15" viewBox="0 0 15 15" fill="none" style="flex-shrink:0; margin-top:2px;"><path d="M2.5 7.5L5.5 10.5L12.5 4" stroke="#E8A020" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span style="font-size: 15px; color: #3A2C1E; line-height: 1.5;">Tersedia di <strong>Airbnb</strong> dan <strong>Booking.com</strong></span>
+        </div>
+        <div style="margin-top: 8px; padding-top: 20px; border-top: 1px solid #EAE0D4;">
+          <a href="{{ waUrl }}" target="_blank" rel="noopener" style="display: flex; align-items: center; justify-content: center; gap: 10px; background: #25D366; color: #fff; font-size: 15px; font-weight: 700; padding: 14px 24px; border-radius: 4px; letter-spacing: 0.02em;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0;"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Tanya Ketersediaan via WhatsApp
+          </a>
+        </div>
+      </div>
+    </div>
+    <p style="text-align: center; font-size: 12px; color: #9A8878; margin-top: 14px; letter-spacing: 0.02em;">* Harga dapat berubah sewaktu-waktu</p>
+  </div>
+</section>
+
+<!-- ── GALERI ── -->
+<section id="galeri" style="background: #1C3068; padding: 72px clamp(18px,5vw,60px);">
+  <div style="max-width: 1080px; margin: 0 auto;">
+    <p style="font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: #E8A020; font-weight: 700; text-align: center; margin-bottom: 12px;">Lihat Propertinya</p>
+    <div style="width: 44px; height: 2px; background: #E8A020; margin: 0 auto 12px;"></div>
+    <h2 style="font-family: 'Playfair Display', serif; font-size: clamp(26px,3.5vw,38px); font-weight: 700; color: #FDF6EC; text-align: center; margin-bottom: 40px;">Galeri Foto</h2>
+    <div style="border-radius: 6px; overflow: hidden; box-shadow: 0 8px 48px rgba(0,0,0,0.3);">
+      <img src="uploads/photo-1781888941293.jpg" alt="Tampak depan Homestay Lilo Lila" style="width: 100%; height: clamp(260px,45vw,520px); object-fit: cover; object-position: center 30%; display: block;">
+    </div>
+    <p style="text-align: center; color: #A8C4E0; font-size: 14px; margin-top: 18px; font-style: italic; letter-spacing: 0.02em;">Tampak Depan — Homestay Lilo Lila, Sukoharjo · Solo</p>
+    <div style="text-align: center; margin-top: 24px;">
+      <a href="https://www.airbnb.co.id/rooms/1634567376101102718" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 8px; border: 1px solid rgba(232,160,32,0.5); color: #E8A020; font-size: 14px; font-weight: 600; padding: 10px 24px; border-radius: 3px; letter-spacing: 0.04em;">
+        Lihat Lebih Banyak Foto di Airbnb
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ── TESTIMONI ── -->
+<section id="testimoni" style="background: #12214E; padding: 72px clamp(18px,5vw,60px);">
+  <div style="max-width: 1080px; margin: 0 auto;">
+    <p style="font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: #E8A020; font-weight: 700; text-align: center; margin-bottom: 12px;">Kata Tamu Kami</p>
+    <div style="width: 44px; height: 2px; background: #E8A020; margin: 0 auto 12px;"></div>
+    <h2 style="font-family: 'Playfair Display', serif; font-size: clamp(26px,3.5vw,38px); font-weight: 700; color: #FDF6EC; text-align: center; margin-bottom: 48px;">Ulasan Tamu</h2>
+    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(290px,1fr)); gap: 24px;">
+      <div style="background: rgba(255,251,245,0.06); border: 1px solid rgba(255,251,245,0.12); border-radius: 6px; padding: 30px;">
+        <div style="font-family: 'Playfair Display', serif; font-size: 64px; color: #E8A020; line-height: 0.7; margin-bottom: 18px; opacity: 0.8;">"</div>
+        <p style="font-size: 15px; line-height: 1.75; color: #D4C4A4; font-style: italic; margin-bottom: 22px;">Rumah yang sangat nyaman dan bersih. Fasilitas lengkap sekali, mulai dari dapur hingga mesin cuci. Benar-benar serasa di rumah sendiri.</p>
+        <div style="color: #E8A020; font-size: 13px; letter-spacing: 0.06em;">★★★★★</div>
+        <div style="color: #7A9DC0; font-size: 12px; margin-top: 4px; letter-spacing: 0.04em;">Google Reviews</div>
+      </div>
+      <div style="background: rgba(255,251,245,0.06); border: 1px solid rgba(255,251,245,0.12); border-radius: 6px; padding: 30px;">
+        <div style="font-family: 'Playfair Display', serif; font-size: 64px; color: #E8A020; line-height: 0.7; margin-bottom: 18px; opacity: 0.8;">"</div>
+        <p style="font-size: 15px; line-height: 1.75; color: #D4C4A4; font-style: italic; margin-bottom: 22px;">Worth it banget! Anak-anak betah bermain di sini. Pak Yohanes sangat ramah dan selalu siap membantu kebutuhan tamu.</p>
+        <div style="color: #E8A020; font-size: 13px; letter-spacing: 0.06em;">★★★★★</div>
+        <div style="color: #7A9DC0; font-size: 12px; margin-top: 4px; letter-spacing: 0.04em;">Google Reviews</div>
+      </div>
+      <div style="background: rgba(255,251,245,0.06); border: 1px solid rgba(255,251,245,0.12); border-radius: 6px; padding: 30px;">
+        <div style="font-family: 'Playfair Display', serif; font-size: 64px; color: #E8A020; line-height: 0.7; margin-bottom: 18px; opacity: 0.8;">"</div>
+        <p style="font-size: 15px; line-height: 1.75; color: #D4C4A4; font-style: italic; margin-bottom: 22px;">Lokasi strategis, lingkungan tenang, parkiran luas. Kalau ke Solo lagi, pasti balik ke sini! Sangat direkomendasikan untuk keluarga.</p>
+        <div style="color: #E8A020; font-size: 13px; letter-spacing: 0.06em;">★★★★★</div>
+        <div style="color: #7A9DC0; font-size: 12px; margin-top: 4px; letter-spacing: 0.04em;">Google Reviews</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── LOKASI ── -->
+<section id="lokasi" style="background: #FDF6EC; padding: 72px clamp(18px,5vw,60px);">
+  <div style="max-width: 1080px; margin: 0 auto;">
+    <p style="font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: #C8864A; font-weight: 700; text-align: center; margin-bottom: 12px;">Mudah Dijangkau</p>
+    <div style="width: 44px; height: 2px; background: #E8A020; margin: 0 auto 12px;"></div>
+    <h2 style="font-family: 'Playfair Display', serif; font-size: clamp(26px,3.5vw,38px); font-weight: 700; color: #1C3068; text-align: center; margin-bottom: 48px;">Lokasi Strategis</h2>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px,1fr)); gap: 40px; align-items: start;">
+      <div>
+        <div style="background: #FFFBF5; border: 1px solid #E5D9C8; border-radius: 6px; padding: 28px 28px 22px;">
+          <p style="font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: #C8864A; font-weight: 700; margin-bottom: 10px;">Alamat</p>
+          <p style="font-size: 15px; line-height: 1.7; color: #3A2C1E; margin-bottom: 20px;">Jl. Pd. Indah Permai No.44, Dusun II,<br>Gentan, Kec. Baki, Kab. Sukoharjo,<br>Jawa Tengah 55555</p>
+          <a href="https://maps.app.goo.gl/Dzovk3ECR2dJVobM9" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 8px; background: #1C3068; color: #fff; font-size: 13px; font-weight: 700; padding: 10px 20px; border-radius: 3px; letter-spacing: 0.05em;">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="6" r="2.5" stroke="currentColor" stroke-width="1.5"/><path d="M7 1C4.239 1 2 3.239 2 6c0 3.5 5 8 5 8s5-4.5 5-8c0-2.761-2.239-5-5-5z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+            Buka di Google Maps
+          </a>
+        </div>
+      </div>
+      <div>
+        <p style="font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: #C8864A; font-weight: 700; margin-bottom: 16px;">Estimasi Jarak dari Homestay</p>
+        <div style="display: flex; flex-direction: column; gap: 2px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 16px; background: #FFFBF5; border-radius: 4px;">
+            <span style="font-size: 14px; color: #3A2C1E;">Solo Paragon Mall</span>
+            <span style="font-size: 14px; font-weight: 700; color: #1C3068;">± 10 menit</span>
+          </div>
+          <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 16px; background: #FDF6EC; border-radius: 4px;">
+            <span style="font-size: 14px; color: #3A2C1E;">Stasiun Solo Balapan</span>
+            <span style="font-size: 14px; font-weight: 700; color: #1C3068;">± 15 menit</span>
+          </div>
+          <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 16px; background: #FFFBF5; border-radius: 4px;">
+            <span style="font-size: 14px; color: #3A2C1E;">Pasar Triwindu</span>
+            <span style="font-size: 14px; font-weight: 700; color: #1C3068;">± 15 menit</span>
+          </div>
+          <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 16px; background: #FDF6EC; border-radius: 4px;">
+            <span style="font-size: 14px; color: #3A2C1E;">Keraton Solo</span>
+            <span style="font-size: 14px; font-weight: 700; color: #1C3068;">± 20 menit</span>
+          </div>
+          <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 16px; background: #FFFBF5; border-radius: 4px;">
+            <span style="font-size: 14px; color: #3A2C1E;">Pasar Gede</span>
+            <span style="font-size: 14px; font-weight: 700; color: #1C3068;">± 20 menit</span>
+          </div>
+          <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 16px; background: #FDF6EC; border-radius: 4px;">
+            <span style="font-size: 14px; color: #3A2C1E;">Bandara Adi Soemarmo</span>
+            <span style="font-size: 14px; font-weight: 700; color: #1C3068;">± 25 menit</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA FINAL ── -->
+<section style="background: #1C3068; padding: 80px clamp(18px,5vw,60px); text-align: center;">
+  <p style="font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: #E8A020; font-weight: 700; margin-bottom: 18px;">Liburan Keluarga yang Tak Terlupakan</p>
+  <h2 style="font-family: 'Playfair Display', serif; font-size: clamp(28px,4.5vw,52px); font-weight: 700; color: #FDF6EC; line-height: 1.2; margin-bottom: 16px; text-wrap: pretty;">Siap Menginap Bersama<br>Keluarga?</h2>
+  <p style="font-size: 16px; color: #A8C4E0; max-width: 460px; margin: 0 auto 40px; line-height: 1.7; font-weight: 300;">Hubungi kami sekarang untuk cek ketersediaan dan dapatkan penawaran terbaik untuk keluarga Anda.</p>
+  <a href="{{ waUrl }}" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 12px; background: #25D366; color: #fff; font-size: 18px; font-weight: 700; padding: 16px 40px; border-radius: 4px; letter-spacing: 0.02em;">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0;"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Chat WhatsApp Sekarang
+  </a>
+  <p style="color: #5A7AAA; font-size: 13px; margin-top: 16px;">0821-4387-3791 · Pak Yohanes</p>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer style="background: #0C1428; padding: 40px clamp(18px,5vw,60px);">
+  <div style="max-width: 1080px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 20px; text-align: center;">
+    <img src="uploads/logo-1781888930194.jpg" alt="Homestay Lilo Lila" style="height: 52px; width: auto; opacity: 0.9;">
+    <p style="font-size: 13px; color: #5A7AAA; line-height: 1.7; max-width: 400px;">Jl. Pd. Indah Permai No.44, Gentan, Baki, Sukoharjo, Jawa Tengah</p>
+    <div style="display: flex; align-items: center; gap: 24px; flex-wrap: wrap; justify-content: center;">
+      <a href="{{ waUrl }}" target="_blank" rel="noopener" style="font-size: 13px; color: #7A9DC0; letter-spacing: 0.04em;">WhatsApp</a>
+      <span style="color: #2A3A5E; font-size: 12px;">·</span>
+      <a href="https://www.airbnb.co.id/rooms/1634567376101102718" target="_blank" rel="noopener" style="font-size: 13px; color: #7A9DC0; letter-spacing: 0.04em;">Airbnb</a>
+      <span style="color: #2A3A5E; font-size: 12px;">·</span>
+      <a href="https://www.booking.com/Pulse-ucOOhs" target="_blank" rel="noopener" style="font-size: 13px; color: #7A9DC0; letter-spacing: 0.04em;">Booking.com</a>
+    </div>
+    <p style="font-size: 12px; color: #3A5070; letter-spacing: 0.06em;">© 2025 Homestay Lilo Lila. Since 2025.</p>
+  </div>
+</footer>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{
+  &quot;$preview&quot;: { &quot;width&quot;: 1440 },
+  &quot;weekdayPrice&quot;: {
+    &quot;editor&quot;: &quot;text&quot;,
+    &quot;default&quot;: &quot;Rp600.000&quot;,
+    &quot;tsType&quot;: &quot;string&quot;
+  }
+}">
+class Component extends DCLogic {
+  state = { dark: false };
+
+  componentDidMount() {
+    const style = document.createElement('style');
+    style.id = 'll-dark-mode';
+    document.head.appendChild(style);
+    this._styleEl = style;
+
+    // Attach direct DOM listener — more reliable than synthetic events in DC preview
+    this._toggleHandler = () => this.setState(s => ({ dark: !s.dark }));
+    const btn = document.getElementById('ll-dark-toggle');
+    if (btn) btn.addEventListener('click', this._toggleHandler);
+
+    const saved = localStorage.getItem('ll-dark');
+    if (saved === '1') this.setState({ dark: true });
+  }
+
+  componentWillUnmount() {
+    if (this._styleEl) this._styleEl.remove();
+    const btn = document.getElementById('ll-dark-toggle');
+    if (btn && this._toggleHandler) btn.removeEventListener('click', this._toggleHandler);
+  }
+
+  componentDidUpdate() {
+    this._applyTheme();
+  }
+
+
+
+  _applyTheme() {
+    if (!this._styleEl) return;
+    const dark = this.state.dark;
+    localStorage.setItem('ll-dark', dark ? '1' : '0');
+    if (!dark) { this._styleEl.textContent = ''; return; }
+    this._styleEl.textContent = `
+      /* ── Base ── */
+      body { background: #080F1D !important; color: #E4D9CC !important; }
+
+      /* ── Light section backgrounds → deep navy-dark ── */
+      [style*="background: #FDF6EC"] { background: #080F1D !important; }
+      [style*="background: #FFFBF5"] { background: #0D1828 !important; }
+
+      /* ── Stat bar, Galeri, CTA, Footer → subtly richer ── */
+      [style*="background: #1C3068"] { background: #152448 !important; }
+      [style*="background: #12214E"] { background: #0E1B3C !important; }
+      [style*="background: #0C1428"] { background: #060D1A !important; }
+
+      /* ── Cards & containers ── */
+      [style*="border: 1px solid #E5D9C8"] { background: #0D1828 !important; border-color: #1C2E48 !important; }
+      [style*="border: 1px solid #EAE0D4"] { background: #080F1D !important; border-color: #1C2E48 !important; }
+      [style*="border: 1px solid rgba(255,251,245,0.12)"] { background: rgba(255,255,255,0.04) !important; border-color: rgba(255,255,255,0.1) !important; }
+
+      /* ── Borders only ── */
+      [style*="border-bottom: 1px solid #E5D9C8"] { border-bottom-color: #1C2E48 !important; }
+      [style*="border-top: 1px solid #EAE0D4"] { border-top-color: #1C2E48 !important; }
+      [style*="border: 1px solid rgba(232,160,32,0.5)"] { border-color: rgba(232,160,32,0.45) !important; }
+
+      /* ── Text colours ── */
+      [style*="color: #2A1F14"] { color: #E4D9CC !important; }
+      [style*="color: #5A4A3A"] { color: #90A8BC !important; }
+      [style*="color: #3A2C1E"] { color: #D0C4B8 !important; }
+      [style*="color: #1C3068"] { color: #7AB8DC !important; }
+      [style*="color: #C8864A"] { color: #D8A870 !important; }
+      [style*="color: #9A8878"] { color: #5C7890 !important; }
+      [style*="color: #5A7AAA"] { color: #4A6880 !important; }
+
+      /* ── Hero badge ── */
+      [style*="background: rgba(232,160,32,0.12)"] { background: rgba(232,160,32,0.15) !important; }
+
+      /* ── Harga card header keeps navy-ish but darkened ── */
+      [style*="background: #1C3068"][style*="padding: 28px 32px"] { background: #152040 !important; }
+
+      /* ── Nav button stays navy ── */
+      [style*="background: #1C3068"][style*="text-transform: uppercase"] { background: #152448 !important; }
+
+      /* ── WhatsApp buttons stay green ── */
+      [style*="background: #25D366"] { background: #1BA854 !important; }
+
+      /* ── Shadow ── */
+      [style*="box-shadow: 0 4px 24px rgba(28,48,104,0.07)"] { box-shadow: 0 4px 32px rgba(0,0,0,0.55) !important; }
+      [style*="box-shadow: 0 8px 48px rgba(0,0,0,0.3)"] { box-shadow: 0 8px 48px rgba(0,0,0,0.65) !important; }
+
+      /* ── Gold dividers, stars, labels stay as-is ── */
+    `;
+  }
+
+  renderVals() {
+    const msg = encodeURIComponent("Halo, saya tertarik untuk memesan Homestay Lilo Lila. Boleh saya tanya ketersediaannya?");
+    const dark = this.state.dark;
+    return {
+      waUrl: `https://wa.me/6282143873791?text=${msg}`,
+      weekdayPrice: this.props.weekdayPrice ?? "Rp600.000",
+      toggleDark: () => this.setState(s => ({ dark: !s.dark })),
+      toggleBg: dark ? '#E8A020' : 'rgba(28,48,104,0.15)',
+      toggleBorder: dark ? '#C8880A' : 'rgba(28,48,104,0.2)',
+      toggleThumbLeft: dark ? '23px' : '3px',
+      toggleTitle: dark ? 'Ganti ke Mode Terang' : 'Ganti ke Mode Gelap',
+    };
+  }
+}
+</script>
+</body>
+</html>
