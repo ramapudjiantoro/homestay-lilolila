@@ -11,9 +11,46 @@
 <helmet>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
   <style>
+    /* ── CSS Variables (Light Mode) ── */
+    :root {
+      --ll-bg:        #FDF6EC;
+      --ll-surface:   #FFFBF5;
+      --ll-border:    #E5D9C8;
+      --ll-border-alt:#EAE0D4;
+      --ll-text:      #2A1F14;
+      --ll-text-2:    #3A2C1E;
+      --ll-text-3:    #5A4A3A;
+      --ll-heading:   #1C3068;
+      --ll-copper:    #C8864A;
+      --ll-footnote:  #9A8878;
+      --ll-link:      #5A7AAA;
+      --ll-dim:       #3A5070;
+      --ll-wa:        #25D366;
+      --ll-shadow-card: 0 4px 24px rgba(28,48,104,0.07);
+      --ll-shadow-img:  0 8px 48px rgba(0,0,0,0.3);
+    }
+    /* ── CSS Variables (Dark Mode) ── */
+    html.ll-dark-mode {
+      --ll-bg:        #080F1D;
+      --ll-surface:   #0D1828;
+      --ll-border:    #1C2E48;
+      --ll-border-alt:#172038;
+      --ll-text:      #E4D9CC;
+      --ll-text-2:    #D0C4B8;
+      --ll-text-3:    #8AAABA;
+      --ll-heading:   #7AB8DC;
+      --ll-copper:    #D8A870;
+      --ll-footnote:  #587890;
+      --ll-link:      #5A8AAA;
+      --ll-dim:       #3A5A70;
+      --ll-wa:        #1BA854;
+      --ll-shadow-card: 0 4px 32px rgba(0,0,0,0.55);
+      --ll-shadow-img:  0 8px 56px rgba(0,0,0,0.7);
+    }
+
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
-    body { font-family: 'Lato', sans-serif; background: #FDF6EC; color: #2A1F14; overflow-x: hidden; }
+    body { font-family: 'Lato', sans-serif; background: var(--ll-bg); color: var(--ll-text); overflow-x: hidden; }
     a { text-decoration: none; }
     @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
     @keyframes fadeUp { from { opacity: 0; transform: translateY(32px); } to { opacity: 1; transform: translateY(0); } }
@@ -22,14 +59,12 @@
     html.ll-notrans *, html.ll-notrans *::before, html.ll-notrans *::after { transition-duration: 0ms !important; }
     body, nav, section, article, aside, header, footer, div, p, span, h1, h2, h3, h4, h5, h6, a, li, button { transition: background-color 0.35s ease, color 0.25s ease, border-color 0.3s ease, box-shadow 0.3s ease; }
     img, video, canvas { transition: none !important; }
-    svg { transition: color 0.25s ease, stroke 0.25s ease, fill 0.25s ease; }
 
     /* ── Navbar links ── */
     .ll-nav-links { display: flex; align-items: center; }
-    .ll-nav-links a { color: #3A2C1E; font-size: 13.5px; font-weight: 600; letter-spacing: 0.04em; padding: 5px 14px; border-radius: 4px; white-space: nowrap; }
-    .ll-nav-links a:hover { background: rgba(28,48,104,0.08); color: #1C3068; }
+    .ll-nav-links a { color: var(--ll-text-2); font-size: 13.5px; font-weight: 600; letter-spacing: 0.04em; padding: 5px 14px; border-radius: 4px; white-space: nowrap; }
+    .ll-nav-links a:hover { background: rgba(28,48,104,0.08); color: var(--ll-heading); }
     @media (max-width: 860px) { .ll-nav-links { display: none !important; } }
-    html.ll-dark-mode .ll-nav-links a { color: #A8C4E0; }
     html.ll-dark-mode .ll-nav-links a:hover { background: rgba(255,255,255,0.07); color: #E8A020; }
 
     /* ── Mode icon ── */
@@ -41,7 +76,7 @@
 </helmet>
 
 <!-- ── NAVBAR ── -->
-<nav style="position: sticky; top: 0; z-index: 100; background: #FFFBF5; border-bottom: 1px solid #E5D9C8; padding: 0 clamp(18px,5vw,60px); height: 68px; display: flex; align-items: center; justify-content: space-between; gap: 16px;">
+<nav style="position: sticky; top: 0; z-index: 100; background: var(--ll-surface); border-bottom: 1px solid var(--ll-border); padding: 0 clamp(18px,5vw,60px); height: 68px; display: flex; align-items: center; justify-content: space-between; gap: 16px;">
   <img src="uploads/logo-1781888930194.jpg" alt="Homestay Lilo Lila" style="height: 50px; width: auto; object-fit: contain; flex-shrink: 0;">
   <div class="ll-nav-links">
     <a href="#fasilitas">Fasilitas</a>
@@ -76,7 +111,7 @@
     <h1 style="font-family: 'Playfair Display', serif; font-size: clamp(40px,7.5vw,92px); font-weight: 700; color: #FDF6EC; line-height: 1.05; margin-bottom: 12px; text-wrap: pretty;">Homestay Lilo Lila</h1>
     <p style="font-family: 'Playfair Display', serif; font-style: italic; font-size: clamp(16px,2.5vw,24px); color: #D4C090; margin-bottom: 36px; letter-spacing: 0.03em;">"Serasa di Rumah Sendiri"</p>
     <div style="display: flex; align-items: center; gap: 20px; flex-wrap: wrap;">
-      <a href="{{ waUrl }}" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 10px; background: #25D366; color: #fff; font-size: 16px; font-weight: 700; padding: 14px 30px; border-radius: 4px; letter-spacing: 0.02em; white-space: nowrap;">
+      <a href="{{ waUrl }}" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 10px; background: var(--ll-wa); color: #fff; font-size: 16px; font-weight: 700; padding: 14px 30px; border-radius: 4px; letter-spacing: 0.02em; white-space: nowrap;">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0;"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
         Chat WhatsApp
       </a>
@@ -108,97 +143,97 @@
 </div>
 
 <!-- ── TENTANG ── -->
-<section style="background: #FDF6EC; padding: 80px clamp(18px,5vw,60px);">
+<section style="background: var(--ll-bg); padding: 80px clamp(18px,5vw,60px);">
   <div style="max-width: 700px; margin: 0 auto; text-align: center;">
-    <p style="font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: #C8864A; font-weight: 700; margin-bottom: 16px;">Sukoharjo · Solo · Jawa Tengah</p>
+    <p style="font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ll-copper); font-weight: 700; margin-bottom: 16px;">Sukoharjo · Solo · Jawa Tengah</p>
     <div style="width: 44px; height: 2px; background: #E8A020; margin: 0 auto 24px;"></div>
-    <h2 style="font-family: 'Playfair Display', serif; font-size: clamp(28px,4vw,44px); font-weight: 700; color: #1C3068; line-height: 1.2; margin-bottom: 22px; text-wrap: pretty;">Rumah Keduamu di Kota Solo</h2>
-    <p style="font-size: 17px; line-height: 1.85; color: #5A4A3A; font-weight: 300; text-wrap: pretty;">Homestay Lilo Lila hadir untuk keluarga yang ingin menikmati Solo tanpa kehilangan kenyamanan rumah sendiri. Dengan tiga kamar tidur, dapur lengkap, ruang santai yang luas, dan suasana lingkungan yang tenang — setiap momen bersama keluarga menjadi lebih bermakna.</p>
+    <h2 style="font-family: 'Playfair Display', serif; font-size: clamp(28px,4vw,44px); font-weight: 700; color: var(--ll-heading); line-height: 1.2; margin-bottom: 22px; text-wrap: pretty;">Rumah Keduamu di Kota Solo</h2>
+    <p style="font-size: 17px; line-height: 1.85; color: var(--ll-text-3); font-weight: 300; text-wrap: pretty;">Homestay Lilo Lila hadir untuk keluarga yang ingin menikmati Solo tanpa kehilangan kenyamanan rumah sendiri. Dengan tiga kamar tidur, dapur lengkap, ruang santai yang luas, dan suasana lingkungan yang tenang — setiap momen bersama keluarga menjadi lebih bermakna.</p>
   </div>
 </section>
 
 <!-- ── FASILITAS ── -->
-<section id="fasilitas" style="background: #FFFBF5; padding: 72px clamp(18px,5vw,60px);">
+<section id="fasilitas" style="background: var(--ll-surface); padding: 72px clamp(18px,5vw,60px);">
   <div style="max-width: 1080px; margin: 0 auto;">
-    <p style="font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: #C8864A; font-weight: 700; text-align: center; margin-bottom: 12px;">Yang Anda Dapatkan</p>
+    <p style="font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ll-copper); font-weight: 700; text-align: center; margin-bottom: 12px;">Yang Anda Dapatkan</p>
     <div style="width: 44px; height: 2px; background: #E8A020; margin: 0 auto 12px;"></div>
-    <h2 style="font-family: 'Playfair Display', serif; font-size: clamp(26px,3.5vw,38px); font-weight: 700; color: #1C3068; text-align: center; margin-bottom: 48px;">Fasilitas Lengkap</h2>
+    <h2 style="font-family: 'Playfair Display', serif; font-size: clamp(26px,3.5vw,38px); font-weight: 700; color: var(--ll-heading); text-align: center; margin-bottom: 48px;">Fasilitas Lengkap</h2>
     <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(210px,1fr)); gap: 12px;">
-      <div style="display: flex; align-items: center; gap: 12px; padding: 14px 16px; background: #FDF6EC; border-radius: 4px; border: 1px solid #EAE0D4;">
+      <div style="display: flex; align-items: center; gap: 12px; padding: 14px 16px; background: var(--ll-bg); border-radius: 4px; border: 1px solid var(--ll-border-alt);">
         <svg width="15" height="15" viewBox="0 0 15 15" fill="none" style="flex-shrink:0;"><path d="M2.5 7.5L5.5 10.5L12.5 4" stroke="#E8A020" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <span style="font-size: 14px; color: #3A2C1E; line-height: 1.3;">3 Kamar Tidur</span>
+        <span style="font-size: 14px; color: var(--ll-text-2); line-height: 1.3;">3 Kamar Tidur</span>
       </div>
-      <div style="display: flex; align-items: center; gap: 12px; padding: 14px 16px; background: #FDF6EC; border-radius: 4px; border: 1px solid #EAE0D4;">
+      <div style="display: flex; align-items: center; gap: 12px; padding: 14px 16px; background: var(--ll-bg); border-radius: 4px; border: 1px solid var(--ll-border-alt);">
         <svg width="15" height="15" viewBox="0 0 15 15" fill="none" style="flex-shrink:0;"><path d="M2.5 7.5L5.5 10.5L12.5 4" stroke="#E8A020" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <span style="font-size: 14px; color: #3A2C1E; line-height: 1.3;">Kamar Mandi + Bathtub</span>
+        <span style="font-size: 14px; color: var(--ll-text-2); line-height: 1.3;">Kamar Mandi + Bathtub</span>
       </div>
-      <div style="display: flex; align-items: center; gap: 12px; padding: 14px 16px; background: #FDF6EC; border-radius: 4px; border: 1px solid #EAE0D4;">
+      <div style="display: flex; align-items: center; gap: 12px; padding: 14px 16px; background: var(--ll-bg); border-radius: 4px; border: 1px solid var(--ll-border-alt);">
         <svg width="15" height="15" viewBox="0 0 15 15" fill="none" style="flex-shrink:0;"><path d="M2.5 7.5L5.5 10.5L12.5 4" stroke="#E8A020" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <span style="font-size: 14px; color: #3A2C1E; line-height: 1.3;">Water Heater</span>
+        <span style="font-size: 14px; color: var(--ll-text-2); line-height: 1.3;">Water Heater</span>
       </div>
-      <div style="display: flex; align-items: center; gap: 12px; padding: 14px 16px; background: #FDF6EC; border-radius: 4px; border: 1px solid #EAE0D4;">
+      <div style="display: flex; align-items: center; gap: 12px; padding: 14px 16px; background: var(--ll-bg); border-radius: 4px; border: 1px solid var(--ll-border-alt);">
         <svg width="15" height="15" viewBox="0 0 15 15" fill="none" style="flex-shrink:0;"><path d="M2.5 7.5L5.5 10.5L12.5 4" stroke="#E8A020" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <span style="font-size: 14px; color: #3A2C1E; line-height: 1.3;">AC di Setiap Kamar</span>
+        <span style="font-size: 14px; color: var(--ll-text-2); line-height: 1.3;">AC di Setiap Kamar</span>
       </div>
-      <div style="display: flex; align-items: center; gap: 12px; padding: 14px 16px; background: #FDF6EC; border-radius: 4px; border: 1px solid #EAE0D4;">
+      <div style="display: flex; align-items: center; gap: 12px; padding: 14px 16px; background: var(--ll-bg); border-radius: 4px; border: 1px solid var(--ll-border-alt);">
         <svg width="15" height="15" viewBox="0 0 15 15" fill="none" style="flex-shrink:0;"><path d="M2.5 7.5L5.5 10.5L12.5 4" stroke="#E8A020" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <span style="font-size: 14px; color: #3A2C1E; line-height: 1.3;">WiFi Cepat</span>
+        <span style="font-size: 14px; color: var(--ll-text-2); line-height: 1.3;">WiFi Cepat</span>
       </div>
-      <div style="display: flex; align-items: center; gap: 12px; padding: 14px 16px; background: #FDF6EC; border-radius: 4px; border: 1px solid #EAE0D4;">
+      <div style="display: flex; align-items: center; gap: 12px; padding: 14px 16px; background: var(--ll-bg); border-radius: 4px; border: 1px solid var(--ll-border-alt);">
         <svg width="15" height="15" viewBox="0 0 15 15" fill="none" style="flex-shrink:0;"><path d="M2.5 7.5L5.5 10.5L12.5 4" stroke="#E8A020" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <span style="font-size: 14px; color: #3A2C1E; line-height: 1.3;">Televisi</span>
+        <span style="font-size: 14px; color: var(--ll-text-2); line-height: 1.3;">Televisi</span>
       </div>
-      <div style="display: flex; align-items: center; gap: 12px; padding: 14px 16px; background: #FDF6EC; border-radius: 4px; border: 1px solid #EAE0D4;">
+      <div style="display: flex; align-items: center; gap: 12px; padding: 14px 16px; background: var(--ll-bg); border-radius: 4px; border: 1px solid var(--ll-border-alt);">
         <svg width="15" height="15" viewBox="0 0 15 15" fill="none" style="flex-shrink:0;"><path d="M2.5 7.5L5.5 10.5L12.5 4" stroke="#E8A020" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <span style="font-size: 14px; color: #3A2C1E; line-height: 1.3;">Mesin Cuci</span>
+        <span style="font-size: 14px; color: var(--ll-text-2); line-height: 1.3;">Mesin Cuci</span>
       </div>
-      <div style="display: flex; align-items: center; gap: 12px; padding: 14px 16px; background: #FDF6EC; border-radius: 4px; border: 1px solid #EAE0D4;">
+      <div style="display: flex; align-items: center; gap: 12px; padding: 14px 16px; background: var(--ll-bg); border-radius: 4px; border: 1px solid var(--ll-border-alt);">
         <svg width="15" height="15" viewBox="0 0 15 15" fill="none" style="flex-shrink:0;"><path d="M2.5 7.5L5.5 10.5L12.5 4" stroke="#E8A020" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <span style="font-size: 14px; color: #3A2C1E; line-height: 1.3;">Dapur Lengkap</span>
+        <span style="font-size: 14px; color: var(--ll-text-2); line-height: 1.3;">Dapur Lengkap</span>
       </div>
-      <div style="display: flex; align-items: center; gap: 12px; padding: 14px 16px; background: #FDF6EC; border-radius: 4px; border: 1px solid #EAE0D4;">
+      <div style="display: flex; align-items: center; gap: 12px; padding: 14px 16px; background: var(--ll-bg); border-radius: 4px; border: 1px solid var(--ll-border-alt);">
         <svg width="15" height="15" viewBox="0 0 15 15" fill="none" style="flex-shrink:0;"><path d="M2.5 7.5L5.5 10.5L12.5 4" stroke="#E8A020" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <span style="font-size: 14px; color: #3A2C1E; line-height: 1.3;">Ruang Makan</span>
+        <span style="font-size: 14px; color: var(--ll-text-2); line-height: 1.3;">Ruang Makan</span>
       </div>
-      <div style="display: flex; align-items: center; gap: 12px; padding: 14px 16px; background: #FDF6EC; border-radius: 4px; border: 1px solid #EAE0D4;">
+      <div style="display: flex; align-items: center; gap: 12px; padding: 14px 16px; background: var(--ll-bg); border-radius: 4px; border: 1px solid var(--ll-border-alt);">
         <svg width="15" height="15" viewBox="0 0 15 15" fill="none" style="flex-shrink:0;"><path d="M2.5 7.5L5.5 10.5L12.5 4" stroke="#E8A020" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <span style="font-size: 14px; color: #3A2C1E; line-height: 1.3;">Ruang Santai Keluarga</span>
+        <span style="font-size: 14px; color: var(--ll-text-2); line-height: 1.3;">Ruang Santai Keluarga</span>
       </div>
-      <div style="display: flex; align-items: center; gap: 12px; padding: 14px 16px; background: #FDF6EC; border-radius: 4px; border: 1px solid #EAE0D4;">
+      <div style="display: flex; align-items: center; gap: 12px; padding: 14px 16px; background: var(--ll-bg); border-radius: 4px; border: 1px solid var(--ll-border-alt);">
         <svg width="15" height="15" viewBox="0 0 15 15" fill="none" style="flex-shrink:0;"><path d="M2.5 7.5L5.5 10.5L12.5 4" stroke="#E8A020" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <span style="font-size: 14px; color: #3A2C1E; line-height: 1.3;">Kulkas</span>
+        <span style="font-size: 14px; color: var(--ll-text-2); line-height: 1.3;">Kulkas</span>
       </div>
-      <div style="display: flex; align-items: center; gap: 12px; padding: 14px 16px; background: #FDF6EC; border-radius: 4px; border: 1px solid #EAE0D4;">
+      <div style="display: flex; align-items: center; gap: 12px; padding: 14px 16px; background: var(--ll-bg); border-radius: 4px; border: 1px solid var(--ll-border-alt);">
         <svg width="15" height="15" viewBox="0 0 15 15" fill="none" style="flex-shrink:0;"><path d="M2.5 7.5L5.5 10.5L12.5 4" stroke="#E8A020" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <span style="font-size: 14px; color: #3A2C1E; line-height: 1.3;">Setrika &amp; Perlengkapan Dapur</span>
+        <span style="font-size: 14px; color: var(--ll-text-2); line-height: 1.3;">Setrika &amp; Perlengkapan Dapur</span>
       </div>
-      <div style="display: flex; align-items: center; gap: 12px; padding: 14px 16px; background: #FDF6EC; border-radius: 4px; border: 1px solid #EAE0D4;">
+      <div style="display: flex; align-items: center; gap: 12px; padding: 14px 16px; background: var(--ll-bg); border-radius: 4px; border: 1px solid var(--ll-border-alt);">
         <svg width="15" height="15" viewBox="0 0 15 15" fill="none" style="flex-shrink:0;"><path d="M2.5 7.5L5.5 10.5L12.5 4" stroke="#E8A020" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <span style="font-size: 14px; color: #3A2C1E; line-height: 1.3;">Parkir 2–3 Mobil</span>
+        <span style="font-size: 14px; color: var(--ll-text-2); line-height: 1.3;">Parkir 2–3 Mobil</span>
       </div>
-      <div style="display: flex; align-items: center; gap: 12px; padding: 14px 16px; background: #FDF6EC; border-radius: 4px; border: 1px solid #EAE0D4;">
+      <div style="display: flex; align-items: center; gap: 12px; padding: 14px 16px; background: var(--ll-bg); border-radius: 4px; border: 1px solid var(--ll-border-alt);">
         <svg width="15" height="15" viewBox="0 0 15 15" fill="none" style="flex-shrink:0;"><path d="M2.5 7.5L5.5 10.5L12.5 4" stroke="#E8A020" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <span style="font-size: 14px; color: #3A2C1E; line-height: 1.3;">Karaoke</span>
+        <span style="font-size: 14px; color: var(--ll-text-2); line-height: 1.3;">Karaoke</span>
       </div>
-      <div style="display: flex; align-items: center; gap: 12px; padding: 14px 16px; background: #FDF6EC; border-radius: 4px; border: 1px solid #EAE0D4;">
+      <div style="display: flex; align-items: center; gap: 12px; padding: 14px 16px; background: var(--ll-bg); border-radius: 4px; border: 1px solid var(--ll-border-alt);">
         <svg width="15" height="15" viewBox="0 0 15 15" fill="none" style="flex-shrink:0;"><path d="M2.5 7.5L5.5 10.5L12.5 4" stroke="#E8A020" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <span style="font-size: 14px; color: #3A2C1E; line-height: 1.3;">Mainan Anak &amp; Bunk Bed</span>
+        <span style="font-size: 14px; color: var(--ll-text-2); line-height: 1.3;">Mainan Anak &amp; Bunk Bed</span>
       </div>
-      <div style="display: flex; align-items: center; gap: 12px; padding: 14px 16px; background: #FDF6EC; border-radius: 4px; border: 1px solid #EAE0D4;">
+      <div style="display: flex; align-items: center; gap: 12px; padding: 14px 16px; background: var(--ll-bg); border-radius: 4px; border: 1px solid var(--ll-border-alt);">
         <svg width="15" height="15" viewBox="0 0 15 15" fill="none" style="flex-shrink:0;"><path d="M2.5 7.5L5.5 10.5L12.5 4" stroke="#E8A020" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <span style="font-size: 14px; color: #3A2C1E; line-height: 1.3;">Lingkungan Aman untuk Anak</span>
+        <span style="font-size: 14px; color: var(--ll-text-2); line-height: 1.3;">Lingkungan Aman untuk Anak</span>
       </div>
     </div>
   </div>
 </section>
 
 <!-- ── HARGA ── -->
-<section id="harga" style="background: #FDF6EC; padding: 72px clamp(18px,5vw,60px);">
+<section id="harga" style="background: var(--ll-bg); padding: 72px clamp(18px,5vw,60px);">
   <div style="max-width: 680px; margin: 0 auto;">
-    <p style="font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: #C8864A; font-weight: 700; text-align: center; margin-bottom: 12px;">Transparan &amp; Terjangkau</p>
+    <p style="font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ll-copper); font-weight: 700; text-align: center; margin-bottom: 12px;">Transparan &amp; Terjangkau</p>
     <div style="width: 44px; height: 2px; background: #E8A020; margin: 0 auto 12px;"></div>
-    <h2 style="font-family: 'Playfair Display', serif; font-size: clamp(26px,3.5vw,38px); font-weight: 700; color: #1C3068; text-align: center; margin-bottom: 36px;">Harga &amp; Ketersediaan</h2>
-    <div style="background: #FFFBF5; border: 1px solid #E5D9C8; border-radius: 6px; overflow: hidden; box-shadow: 0 4px 24px rgba(28,48,104,0.07);">
+    <h2 style="font-family: 'Playfair Display', serif; font-size: clamp(26px,3.5vw,38px); font-weight: 700; color: var(--ll-heading); text-align: center; margin-bottom: 36px;">Harga &amp; Ketersediaan</h2>
+    <div style="background: var(--ll-surface); border: 1px solid var(--ll-border); border-radius: 6px; overflow: hidden; box-shadow: var(--ll-shadow-card);">
       <div style="background: #1C3068; padding: 28px 32px;">
         <div style="font-family: 'Playfair Display', serif; font-size: 48px; font-weight: 700; color: #E8A020; line-height: 1;">{{ weekdayPrice }}</div>
         <div style="font-size: 14px; color: #A8C4E0; margin-top: 6px; letter-spacing: 0.04em;">per malam · Weekday</div>
@@ -206,29 +241,29 @@
       <div style="padding: 28px 32px; display: flex; flex-direction: column; gap: 14px;">
         <div style="display: flex; align-items: flex-start; gap: 12px;">
           <svg width="15" height="15" viewBox="0 0 15 15" fill="none" style="flex-shrink:0; margin-top:2px;"><path d="M2.5 7.5L5.5 10.5L12.5 4" stroke="#E8A020" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          <span style="font-size: 15px; color: #3A2C1E; line-height: 1.5;">Kapasitas hingga <strong>10 orang</strong> (pernah menampung ~20 orang untuk rombongan)</span>
+          <span style="font-size: 15px; color: var(--ll-text-2); line-height: 1.5;">Kapasitas hingga <strong>10 orang</strong> (pernah menampung ~20 orang untuk rombongan)</span>
         </div>
         <div style="display: flex; align-items: flex-start; gap: 12px;">
           <svg width="15" height="15" viewBox="0 0 15 15" fill="none" style="flex-shrink:0; margin-top:2px;"><path d="M2.5 7.5L5.5 10.5L12.5 4" stroke="#E8A020" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          <span style="font-size: 15px; color: #3A2C1E; line-height: 1.5;">Harga <strong>weekend</strong> dan rombongan dapat dibicarakan</span>
+          <span style="font-size: 15px; color: var(--ll-text-2); line-height: 1.5;">Harga <strong>weekend</strong> dan rombongan dapat dibicarakan</span>
         </div>
         <div style="display: flex; align-items: flex-start; gap: 12px;">
           <svg width="15" height="15" viewBox="0 0 15 15" fill="none" style="flex-shrink:0; margin-top:2px;"><path d="M2.5 7.5L5.5 10.5L12.5 4" stroke="#E8A020" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          <span style="font-size: 15px; color: #3A2C1E; line-height: 1.5;">Pembayaran bisa dilakukan <strong>saat check-in</strong></span>
+          <span style="font-size: 15px; color: var(--ll-text-2); line-height: 1.5;">Pembayaran bisa dilakukan <strong>saat check-in</strong></span>
         </div>
         <div style="display: flex; align-items: flex-start; gap: 12px;">
           <svg width="15" height="15" viewBox="0 0 15 15" fill="none" style="flex-shrink:0; margin-top:2px;"><path d="M2.5 7.5L5.5 10.5L12.5 4" stroke="#E8A020" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          <span style="font-size: 15px; color: #3A2C1E; line-height: 1.5;">Tersedia di <strong>Airbnb</strong> dan <strong>Booking.com</strong></span>
+          <span style="font-size: 15px; color: var(--ll-text-2); line-height: 1.5;">Tersedia di <strong>Airbnb</strong> dan <strong>Booking.com</strong></span>
         </div>
-        <div style="margin-top: 8px; padding-top: 20px; border-top: 1px solid #EAE0D4;">
-          <a href="{{ waUrl }}" target="_blank" rel="noopener" style="display: flex; align-items: center; justify-content: center; gap: 10px; background: #25D366; color: #fff; font-size: 15px; font-weight: 700; padding: 14px 24px; border-radius: 4px; letter-spacing: 0.02em;">
+        <div style="margin-top: 8px; padding-top: 20px; border-top: 1px solid var(--ll-border-alt);">
+          <a href="{{ waUrl }}" target="_blank" rel="noopener" style="display: flex; align-items: center; justify-content: center; gap: 10px; background: var(--ll-wa); color: #fff; font-size: 15px; font-weight: 700; padding: 14px 24px; border-radius: 4px; letter-spacing: 0.02em;">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0;"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
             Tanya Ketersediaan via WhatsApp
           </a>
         </div>
       </div>
     </div>
-    <p style="text-align: center; font-size: 12px; color: #9A8878; margin-top: 14px; letter-spacing: 0.02em;">* Harga dapat berubah sewaktu-waktu</p>
+    <p style="text-align: center; font-size: 12px; color: var(--ll-footnote); margin-top: 14px; letter-spacing: 0.02em;">* Harga dapat berubah sewaktu-waktu</p>
   </div>
 </section>
 
@@ -238,7 +273,7 @@
     <p style="font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: #E8A020; font-weight: 700; text-align: center; margin-bottom: 12px;">Lihat Propertinya</p>
     <div style="width: 44px; height: 2px; background: #E8A020; margin: 0 auto 12px;"></div>
     <h2 style="font-family: 'Playfair Display', serif; font-size: clamp(26px,3.5vw,38px); font-weight: 700; color: #FDF6EC; text-align: center; margin-bottom: 40px;">Galeri Foto</h2>
-    <div style="border-radius: 6px; overflow: hidden; box-shadow: 0 8px 48px rgba(0,0,0,0.3);">
+    <div style="border-radius: 6px; overflow: hidden; box-shadow: var(--ll-shadow-img);">
       <img src="uploads/photo-1781888941293.jpg" alt="Tampak depan Homestay Lilo Lila" style="width: 100%; height: clamp(260px,45vw,520px); object-fit: cover; object-position: center 30%; display: block;">
     </div>
     <p style="text-align: center; color: #A8C4E0; font-size: 14px; margin-top: 18px; font-style: italic; letter-spacing: 0.02em;">Tampak Depan — Homestay Lilo Lila, Sukoharjo · Solo</p>
@@ -281,16 +316,16 @@
 </section>
 
 <!-- ── LOKASI ── -->
-<section id="lokasi" style="background: #FDF6EC; padding: 72px clamp(18px,5vw,60px);">
+<section id="lokasi" style="background: var(--ll-bg); padding: 72px clamp(18px,5vw,60px);">
   <div style="max-width: 1080px; margin: 0 auto;">
-    <p style="font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: #C8864A; font-weight: 700; text-align: center; margin-bottom: 12px;">Mudah Dijangkau</p>
+    <p style="font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ll-copper); font-weight: 700; text-align: center; margin-bottom: 12px;">Mudah Dijangkau</p>
     <div style="width: 44px; height: 2px; background: #E8A020; margin: 0 auto 12px;"></div>
-    <h2 style="font-family: 'Playfair Display', serif; font-size: clamp(26px,3.5vw,38px); font-weight: 700; color: #1C3068; text-align: center; margin-bottom: 48px;">Lokasi Strategis</h2>
+    <h2 style="font-family: 'Playfair Display', serif; font-size: clamp(26px,3.5vw,38px); font-weight: 700; color: var(--ll-heading); text-align: center; margin-bottom: 48px;">Lokasi Strategis</h2>
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px,1fr)); gap: 40px; align-items: start;">
       <div>
-        <div style="background: #FFFBF5; border: 1px solid #E5D9C8; border-radius: 6px; padding: 28px 28px 22px;">
-          <p style="font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: #C8864A; font-weight: 700; margin-bottom: 10px;">Alamat</p>
-          <p style="font-size: 15px; line-height: 1.7; color: #3A2C1E; margin-bottom: 20px;">Jl. Pd. Indah Permai No.44, Dusun II,<br>Gentan, Kec. Baki, Kab. Sukoharjo,<br>Jawa Tengah 55555</p>
+        <div style="background: var(--ll-surface); border: 1px solid var(--ll-border); border-radius: 6px; padding: 28px 28px 22px;">
+          <p style="font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ll-copper); font-weight: 700; margin-bottom: 10px;">Alamat</p>
+          <p style="font-size: 15px; line-height: 1.7; color: var(--ll-text-2); margin-bottom: 20px;">Jl. Pd. Indah Permai No.44, Dusun II,<br>Gentan, Kec. Baki, Kab. Sukoharjo,<br>Jawa Tengah 55555</p>
           <a href="https://maps.app.goo.gl/Dzovk3ECR2dJVobM9" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 8px; background: #1C3068; color: #fff; font-size: 13px; font-weight: 700; padding: 10px 20px; border-radius: 3px; letter-spacing: 0.05em;">
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="6" r="2.5" stroke="currentColor" stroke-width="1.5"/><path d="M7 1C4.239 1 2 3.239 2 6c0 3.5 5 8 5 8s5-4.5 5-8c0-2.761-2.239-5-5-5z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
             Buka di Google Maps
@@ -298,31 +333,31 @@
         </div>
       </div>
       <div>
-        <p style="font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: #C8864A; font-weight: 700; margin-bottom: 16px;">Estimasi Jarak dari Homestay</p>
+        <p style="font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ll-copper); font-weight: 700; margin-bottom: 16px;">Estimasi Jarak dari Homestay</p>
         <div style="display: flex; flex-direction: column; gap: 2px;">
-          <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 16px; background: #FFFBF5; border-radius: 4px;">
-            <span style="font-size: 14px; color: #3A2C1E;">Solo Paragon Mall</span>
-            <span style="font-size: 14px; font-weight: 700; color: #1C3068;">± 10 menit</span>
+          <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 16px; background: var(--ll-surface); border-radius: 4px;">
+            <span style="font-size: 14px; color: var(--ll-text-2);">Solo Paragon Mall</span>
+            <span style="font-size: 14px; font-weight: 700; color: var(--ll-heading);">± 10 menit</span>
           </div>
-          <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 16px; background: #FDF6EC; border-radius: 4px;">
-            <span style="font-size: 14px; color: #3A2C1E;">Stasiun Solo Balapan</span>
-            <span style="font-size: 14px; font-weight: 700; color: #1C3068;">± 15 menit</span>
+          <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 16px; background: var(--ll-bg); border-radius: 4px;">
+            <span style="font-size: 14px; color: var(--ll-text-2);">Stasiun Solo Balapan</span>
+            <span style="font-size: 14px; font-weight: 700; color: var(--ll-heading);">± 15 menit</span>
           </div>
-          <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 16px; background: #FFFBF5; border-radius: 4px;">
-            <span style="font-size: 14px; color: #3A2C1E;">Pasar Triwindu</span>
-            <span style="font-size: 14px; font-weight: 700; color: #1C3068;">± 15 menit</span>
+          <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 16px; background: var(--ll-surface); border-radius: 4px;">
+            <span style="font-size: 14px; color: var(--ll-text-2);">Pasar Triwindu</span>
+            <span style="font-size: 14px; font-weight: 700; color: var(--ll-heading);">± 15 menit</span>
           </div>
-          <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 16px; background: #FDF6EC; border-radius: 4px;">
-            <span style="font-size: 14px; color: #3A2C1E;">Keraton Solo</span>
-            <span style="font-size: 14px; font-weight: 700; color: #1C3068;">± 20 menit</span>
+          <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 16px; background: var(--ll-bg); border-radius: 4px;">
+            <span style="font-size: 14px; color: var(--ll-text-2);">Keraton Solo</span>
+            <span style="font-size: 14px; font-weight: 700; color: var(--ll-heading);">± 20 menit</span>
           </div>
-          <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 16px; background: #FFFBF5; border-radius: 4px;">
-            <span style="font-size: 14px; color: #3A2C1E;">Pasar Gede</span>
-            <span style="font-size: 14px; font-weight: 700; color: #1C3068;">± 20 menit</span>
+          <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 16px; background: var(--ll-surface); border-radius: 4px;">
+            <span style="font-size: 14px; color: var(--ll-text-2);">Pasar Gede</span>
+            <span style="font-size: 14px; font-weight: 700; color: var(--ll-heading);">± 20 menit</span>
           </div>
-          <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 16px; background: #FDF6EC; border-radius: 4px;">
-            <span style="font-size: 14px; color: #3A2C1E;">Bandara Adi Soemarmo</span>
-            <span style="font-size: 14px; font-weight: 700; color: #1C3068;">± 25 menit</span>
+          <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 16px; background: var(--ll-bg); border-radius: 4px;">
+            <span style="font-size: 14px; color: var(--ll-text-2);">Bandara Adi Soemarmo</span>
+            <span style="font-size: 14px; font-weight: 700; color: var(--ll-heading);">± 25 menit</span>
           </div>
         </div>
       </div>
@@ -335,18 +370,18 @@
   <p style="font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: #E8A020; font-weight: 700; margin-bottom: 18px;">Liburan Keluarga yang Tak Terlupakan</p>
   <h2 style="font-family: 'Playfair Display', serif; font-size: clamp(28px,4.5vw,52px); font-weight: 700; color: #FDF6EC; line-height: 1.2; margin-bottom: 16px; text-wrap: pretty;">Siap Menginap Bersama<br>Keluarga?</h2>
   <p style="font-size: 16px; color: #A8C4E0; max-width: 460px; margin: 0 auto 40px; line-height: 1.7; font-weight: 300;">Hubungi kami sekarang untuk cek ketersediaan dan dapatkan penawaran terbaik untuk keluarga Anda.</p>
-  <a href="{{ waUrl }}" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 12px; background: #25D366; color: #fff; font-size: 18px; font-weight: 700; padding: 16px 40px; border-radius: 4px; letter-spacing: 0.02em;">
+  <a href="{{ waUrl }}" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 12px; background: var(--ll-wa); color: #fff; font-size: 18px; font-weight: 700; padding: 16px 40px; border-radius: 4px; letter-spacing: 0.02em;">
     <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0;"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
     Chat WhatsApp Sekarang
   </a>
-  <p style="color: #5A7AAA; font-size: 13px; margin-top: 16px;">0821-4387-3791 · Pak Yohanes</p>
+  <p style="color: var(--ll-link); font-size: 13px; margin-top: 16px;">0821-4387-3791 · Pak Yohanes</p>
 </section>
 
 <!-- ── FOOTER ── -->
 <footer style="background: #0C1428; padding: 40px clamp(18px,5vw,60px);">
   <div style="max-width: 1080px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 20px; text-align: center;">
     <img src="uploads/logo-1781888930194.jpg" alt="Homestay Lilo Lila" style="height: 52px; width: auto; opacity: 0.9;">
-    <p style="font-size: 13px; color: #5A7AAA; line-height: 1.7; max-width: 400px;">Jl. Pd. Indah Permai No.44, Gentan, Baki, Sukoharjo, Jawa Tengah</p>
+    <p style="font-size: 13px; color: var(--ll-link); line-height: 1.7; max-width: 400px;">Jl. Pd. Indah Permai No.44, Gentan, Baki, Sukoharjo, Jawa Tengah</p>
     <div style="display: flex; align-items: center; gap: 24px; flex-wrap: wrap; justify-content: center;">
       <a href="{{ waUrl }}" target="_blank" rel="noopener" style="font-size: 13px; color: #7A9DC0; letter-spacing: 0.04em;">WhatsApp</a>
       <span style="color: #2A3A5E; font-size: 12px;">·</span>
@@ -354,7 +389,7 @@
       <span style="color: #2A3A5E; font-size: 12px;">·</span>
       <a href="https://www.booking.com/Pulse-ucOOhs" target="_blank" rel="noopener" style="font-size: 13px; color: #7A9DC0; letter-spacing: 0.04em;">Booking.com</a>
     </div>
-    <p style="font-size: 12px; color: #3A5070; letter-spacing: 0.06em;">© 2025 Homestay Lilo Lila. Since 2025.</p>
+    <p style="font-size: 12px; color: var(--ll-dim); letter-spacing: 0.06em;">© 2025 Homestay Lilo Lila. Since 2025.</p>
   </div>
 </footer>
 </x-dc>
@@ -370,11 +405,6 @@ class Component extends DCLogic {
   state = { dark: false };
 
   componentDidMount() {
-    const style = document.createElement('style');
-    style.id = 'll-dark-mode';
-    document.head.appendChild(style);
-    this._styleEl = style;
-
     // Wait for button to be available and attach listener
     this._toggleHandler = () => this.setState(s => ({ dark: !s.dark }));
 
@@ -410,7 +440,6 @@ class Component extends DCLogic {
   }
 
   componentWillUnmount() {
-    if (this._styleEl) this._styleEl.remove();
     const btn = document.getElementById('ll-dark-toggle');
     if (btn && this._toggleHandler) {
       btn.removeEventListener('click', this._toggleHandler);
@@ -424,73 +453,9 @@ class Component extends DCLogic {
 
 
   _applyTheme() {
-    if (!this._styleEl) return;
     const dark = this.state.dark;
     localStorage.setItem('ll-dark', dark ? '1' : '0');
     document.documentElement.classList.toggle('ll-dark-mode', dark);
-    if (!dark) { this._styleEl.textContent = ''; return; }
-    this._styleEl.textContent = `
-      /* ── Base ── */
-      html.ll-dark-mode body { background: #080F1D !important; color: #E4D9CC !important; }
-
-      /* ── Navbar ── */
-      html.ll-dark-mode nav { background: #0D1828 !important; border-bottom-color: #1C2E48 !important; }
-
-      /* ── Light section backgrounds → deep navy-dark ── */
-      html.ll-dark-mode [style*="background: #FDF6EC"] { background: #080F1D !important; }
-      html.ll-dark-mode [style*="background: #FFFBF5"] { background: #0D1828 !important; }
-
-      /* ── Stat bar, Galeri, CTA, Footer → subtly richer ── */
-      html.ll-dark-mode [style*="background: #1C3068"] { background: #152448 !important; }
-      html.ll-dark-mode [style*="background: #12214E"] { background: #0E1B3C !important; }
-      html.ll-dark-mode [style*="background: #0C1428"] { background: #060D1A !important; }
-
-      /* ── Cards & containers ── */
-      html.ll-dark-mode [style*="border: 1px solid #E5D9C8"] { background: #0D1828 !important; border-color: #1C2E48 !important; }
-      html.ll-dark-mode [style*="border: 1px solid #EAE0D4"] { background: #080F1D !important; border-color: #1C2E48 !important; }
-      html.ll-dark-mode [style*="border: 1px solid rgba(255,251,245,0.12)"] { background: rgba(255,255,255,0.04) !important; border-color: rgba(255,255,255,0.1) !important; }
-
-      /* ── Borders only ── */
-      html.ll-dark-mode [style*="border-bottom: 1px solid #E5D9C8"] { border-bottom-color: #1C2E48 !important; }
-      html.ll-dark-mode [style*="border-top: 1px solid #EAE0D4"] { border-top-color: #1C2E48 !important; }
-      html.ll-dark-mode [style*="border: 1px solid rgba(232,160,32,0.5)"] { border-color: rgba(232,160,32,0.45) !important; }
-
-      /* ── Text colours ── */
-      html.ll-dark-mode [style*="color: #2A1F14"] { color: #E4D9CC !important; }
-      html.ll-dark-mode [style*="color: #5A4A3A"] { color: #90A8BC !important; }
-      html.ll-dark-mode [style*="color: #3A2C1E"] { color: #D0C4B8 !important; }
-      html.ll-dark-mode [style*="color: #1C3068"] { color: #7AB8DC !important; }
-      html.ll-dark-mode [style*="color: #C8864A"] { color: #D8A870 !important; }
-      html.ll-dark-mode [style*="color: #9A8878"] { color: #5C7890 !important; }
-      html.ll-dark-mode [style*="color: #5A7AAA"] { color: #4A6880 !important; }
-      html.ll-dark-mode [style*="color: #3A5070"] { color: #2A4060 !important; }
-
-      /* ── Hero badge ── */
-      html.ll-dark-mode [style*="background: rgba(232,160,32,0.12)"] { background: rgba(232,160,32,0.15) !important; }
-
-      /* ── Harga card header ── */
-      html.ll-dark-mode [style*="background: #1C3068"][style*="padding: 28px 32px"] { background: #152040 !important; }
-
-      /* ── Nav CTA button stays navy ── */
-      html.ll-dark-mode [style*="background: #1C3068"][style*="text-transform: uppercase"] { background: #152448 !important; }
-
-      /* ── Maps button ── */
-      html.ll-dark-mode [style*="background: #1C3068"][style*="padding: 10px 20px"] { background: #152448 !important; }
-
-      /* ── WhatsApp buttons stay green (slightly dimmed) ── */
-      html.ll-dark-mode [style*="background: #25D366"] { background: #1BA854 !important; }
-
-      /* ── Hero overlay: already dark, just deepen slightly ── */
-      html.ll-dark-mode [style*="background: linear-gradient(to top, rgba(10,16,40"] { background: linear-gradient(to top, rgba(4,8,20,0.95) 0%, rgba(4,8,20,0.35) 52%, transparent 100%) !important; }
-
-      /* ── Location rows alternating ── */
-      html.ll-dark-mode [style*="background: #FFFBF5"][style*="border-radius: 4px"] { background: #0D1828 !important; }
-      html.ll-dark-mode [style*="background: #FDF6EC"][style*="border-radius: 4px"] { background: #0A1220 !important; }
-
-      /* ── Shadows ── */
-      html.ll-dark-mode [style*="box-shadow: 0 4px 24px rgba(28,48,104,0.07)"] { box-shadow: 0 4px 32px rgba(0,0,0,0.6) !important; }
-      html.ll-dark-mode [style*="box-shadow: 0 8px 48px rgba(0,0,0,0.3)"] { box-shadow: 0 8px 56px rgba(0,0,0,0.7) !important; }
-    `;
   }
 
   renderVals() {
